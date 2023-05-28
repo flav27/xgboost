@@ -138,17 +138,17 @@ inline LINALG_HD int Popc(uint32_t v) {
 #endif  // compiler
 }
 
-inline LINALG_HD int Popc(uint64_t v) {
-#if defined(__CUDA_ARCH__)
-  return __popcll(v);
-#elif defined(__GNUC__) || defined(__clang__)
-  return __builtin_popcountll(v);
-#elif defined(_MSC_VER)
-  return __popcnt64(v);
-#else
-  return NativePopc(v);
-#endif  // compiler
-}
+//inline LINALG_HD int Popc(uint64_t v) {
+//#if defined(__CUDA_ARCH__)
+//  return __popcll(v);
+//#elif defined(__GNUC__) || defined(__clang__)
+//  return __builtin_popcountll(v);
+//#elif defined(_MSC_VER)
+//  return __popcnt64(v);
+//#else
+//  return NativePopc(v);
+//#endif  // compiler
+//}
 
 template <class T, std::size_t N, std::size_t... Idx>
 constexpr auto Arr2Tup(T (&arr)[N], std::index_sequence<Idx...>) {
